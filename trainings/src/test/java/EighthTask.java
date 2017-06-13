@@ -10,6 +10,7 @@ public class EighthTask extends FunctionalTest {
         driver.get(url);
     }
 
+
     @Test
     public void compare(){
         MainPage main = new MainPage(driver);
