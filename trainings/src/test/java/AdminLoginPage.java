@@ -17,6 +17,7 @@ public class AdminLoginPage extends PageObject {
     private WebElement submitButton;
 
     public AdminLoginPage(WebDriver driver) {
+
         super(driver);
     }
 
@@ -32,6 +33,11 @@ public class AdminLoginPage extends PageObject {
 
     public void Submit(){
         this.submitButton.click();
+    }
+    public void Login(String login, String password ){
+        EnterLogin(login);
+        EnterPassword(password);
+        Submit();
     }
 
 
