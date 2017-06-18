@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class NinthTask extends FunctionalTest {
-    private WebDriver wait;
+public class Ninth_1Task extends FunctionalTest {
     private String url = "http://localhost/litecart/public_html/admin/?app=countries&doc=countries";
     private String countriesLocator = ".//table//tr[@class='row']//td[5]";
     private String rowLocator = ".//table//tr[@class='row']";
@@ -30,11 +29,9 @@ public class NinthTask extends FunctionalTest {
         for (WebElement i : items) itemsNames.add(i.getText());
 
         ArrayList<String> sorteditems = new ArrayList();
-        for (String c : itemsNames) sorteditems.add(c);
-
+        sorteditems.addAll(itemsNames);
         //Collections.reverse(sortedCountry);
         Collections.sort(sorteditems);
-
         return sorteditems.equals(itemsNames);
     }
 
@@ -62,5 +59,27 @@ public class NinthTask extends FunctionalTest {
             }
             }
         }
+
+    @Test
+    public  void checkCountrySort9_2(){
+        String geoUrl = "http://localhost/litecart/public_html/admin/?app=geo_zones&doc=geo_zones";
+        String countriesLocator = ".//table//tr";
+        driver.get(geoUrl);
+        List<WebElement> countries = driver.findElements(By.xpath(countriesLocator));
+        for (WebElement country : countries ){
+            link = country.findElement(By.xpath(countriesLocator + "//a"));
+            link.sendKeys(Keys.CONTROL, Keys.RETURN);
+            ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(1));
+            List<WebElement> geoZones = driver.findElements(By.xpath(".//tr/td[3]/option[@selected='selected']"));
+
+            Assert.assertTrue(checkSort(geoZones));
+
+            driver.close();
+            driver.switchTo().window(tabs.get(0));
+        }
     }
+    }
+//.//*//td//option[@selected='selected']
+
 
