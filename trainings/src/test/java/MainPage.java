@@ -19,11 +19,42 @@ public class MainPage extends PageObject {
     WebElement productName = product.findElement(By.cssSelector("div.name"));
 
 
+    private String newCustomerLink = "#box-account-login td>a";
+    private String emailField = "input[name=email]";
+    private String passwordField = "input[name=password]";
+    private String loginButton = "button[value=Login]";
+    private String successHeader = "#notices > div.success";
+    private String logout = "#box-account ul > li:nth-child(4) > a";
+
+
 
     public MainPage(WebDriver driver) {
 
         super(driver);
     }
+
+    public void login(String login, String password){
+       driver.findElement(By.cssSelector(emailField))
+               .sendKeys(login);
+       driver.findElement(By.cssSelector(passwordField))
+               .sendKeys(password);
+       driver.findElement(By.cssSelector(loginButton))
+               .click();
+    }
+
+    public String logicSuccess(){
+        return driver.findElement(By.cssSelector(successHeader))
+                .getText();
+    }
+     public void createNewCustomer(){
+        driver.findElement(By.cssSelector(newCustomerLink))
+                .click();
+     }
+     public  void logout(){
+         driver.findElement(By.cssSelector(logout))
+                 .click();
+     }
+
 
     public int productsQuantity(){
         return products.size();
