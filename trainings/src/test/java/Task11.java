@@ -42,6 +42,7 @@ public class Task11 extends FunctionalTest {
         Assert.assertEquals("Your customer account has been created.", mainPage.logicSuccess());
         mainPage.logout();
         mainPage.login(email, password);
+        mainPage.logout();
 
 
 
