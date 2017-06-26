@@ -1,8 +1,11 @@
+package Pages;
+
+import Pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class RegistrationPage extends PageObject{
+public class RegistrationPage extends PageObject {
     
     private String createAccountForm = "#create-account ";
 
