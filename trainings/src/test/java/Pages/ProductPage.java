@@ -11,6 +11,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import static java.lang.Integer.*;
 
 public class ProductPage extends PageObject {
@@ -44,16 +47,18 @@ public class ProductPage extends PageObject {
     public WebElement cartLink;
 
     @FindBy(css = "#box-product td.options > select")
-    public WebElement Size;
+    public List<WebElement> Size;
 
 
 
     public void addToCart() {
         int before = parseInt(counter.getText());
-        if (Size.isDisplayed()){
-            Select selectSize = new Select(Size);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        if (Size.size() > 0 ){
+            Select selectSize = new Select(Size.get(0));
             selectSize.selectByIndex(1);
         }
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         addToCartButton.click();
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until((WebDriver d) -> before < parseInt(counter.getText()));

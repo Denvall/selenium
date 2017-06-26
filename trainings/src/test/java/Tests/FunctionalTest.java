@@ -1,5 +1,8 @@
 package Tests;
 
+import Pages.CheckOutPage;
+import Pages.MainPage;
+import Pages.ProductPage;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -11,6 +14,16 @@ import java.util.concurrent.TimeUnit;
 public class FunctionalTest {
 
     protected static WebDriver driver;
+    MainPage mainPage;
+    ProductPage productPage;
+    CheckOutPage checkOutPage;
+
+    public FunctionalTest(){
+
+        mainPage = new MainPage(driver);
+        productPage =  new ProductPage(driver);
+        checkOutPage = new CheckOutPage(driver);
+     }
 
     @BeforeClass
     public static void setUp(){
