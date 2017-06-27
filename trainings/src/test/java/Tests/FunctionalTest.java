@@ -1,8 +1,6 @@
 package Tests;
 
-import Pages.CheckOutPage;
-import Pages.MainPage;
-import Pages.ProductPage;
+import Pages.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -17,12 +15,19 @@ public class FunctionalTest {
     MainPage mainPage;
     ProductPage productPage;
     CheckOutPage checkOutPage;
+    AdminPage adminPage;
+    AdminLoginPage adminLoginPage;
+    CountryPage countryPage;
 
     public FunctionalTest(){
 
         mainPage = new MainPage(driver);
         productPage =  new ProductPage(driver);
         checkOutPage = new CheckOutPage(driver);
+        adminLoginPage = new AdminLoginPage(driver);
+        adminPage = new AdminPage(driver);
+        countryPage = new CountryPage(driver);
+
      }
 
     @BeforeClass
