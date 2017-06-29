@@ -18,6 +18,7 @@ public class FunctionalTest {
     AdminPage adminPage;
     AdminLoginPage adminLoginPage;
     CountryPage countryPage;
+    CatalogPage catalogPage;
 
     public FunctionalTest(){
 
@@ -27,6 +28,7 @@ public class FunctionalTest {
         adminLoginPage = new AdminLoginPage(driver);
         adminPage = new AdminPage(driver);
         countryPage = new CountryPage(driver);
+        catalogPage  = new CatalogPage(driver);
 
      }
 
